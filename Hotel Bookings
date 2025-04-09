@@ -1,0 +1,78 @@
+Power BI Hotel Booking Analytics Dashboard
+Tools Used: Power BI, DAX, Power Query, Data Modeling, Bookings Data (CSV/Excel), Date Slicers, Bar/Line Charts, KPI Cards
+
+Objective:
+Developed an interactive and insightful Power BI dashboard for Velora Hotels to analyze and monitor hotel booking performance, customer behavior, and revenue trends. The goal was to empower business stakeholders with data-driven decision-making for marketing, revenue optimization, and operational planning.
+
+Key KPIs and Visualizations:
+
+📌 Booking Count: 4,000+ total bookings within selected date range
+
+📌 Cancellation Percentage: 28.1%, helping identify booking reliability and churn
+
+📌 Total Revenue: $1M revenue from bookings
+
+📌 Total Room Nights: 8,000 total room nights stayed
+
+📌 Average Room Rate (ARR): $148.4 per night
+
+📈 Bookings Over Time: Daily booking trends via line chart
+
+📊 Bookings by Day of Week: Bar chart to analyze weekday vs weekend demand
+
+🧾 Bookings by Loyalty Level: Customer segmentation analysis to assess loyalty impact
+
+⏱️ Lead Time Analysis: Visualized booking behavior based on how far in advance bookings were made
+
+🌐 Channel-Wise Booking Analysis: Breakdown of booking sources (App, Phone, Velora.com, etc.)
+
+📌 Single Night vs Multi-Night Stays and Loyal vs Non-loyal Guests segmentation for operational planning
+
+DAX Measures Implemented:
+
+DAX
+Copy
+Edit
+-- Total Bookings
+Booking Count = COUNT('Bookings'[BookingID])
+
+-- Cancellation Percentage
+Cancellation Pct = 
+DIVIDE(CALCULATE(COUNT('Bookings'[BookingID]), 'Bookings'[Status] = "Cancelled"),
+       COUNT('Bookings'[BookingID]))
+
+-- Total Revenue
+Total Revenue = SUM('Bookings'[Revenue])
+
+-- Total Room Nights
+Total Room Nights = SUM('Bookings'[RoomNights])
+
+-- Average Room Rate
+Avg Room Rate = 
+DIVIDE([Total Revenue], [Total Room Nights])
+
+-- Booking Lead Time Bucket (Created via calculated column or Power Query buckets)
+How far away bucket = SWITCH(TRUE(),
+    'Bookings'[LeadTime] <= 7, "1. Before a week",
+    'Bookings'[LeadTime] <= 14, "2. Before 2 weeks",
+    'Bookings'[LeadTime] <= 21, "3. Before 3 weeks",
+    'Bookings'[LeadTime] <= 28, "4. Before 4 weeks",
+    "5. More than 4 weeks")
+Impact:
+
+Enabled hotel leadership to identify peak demand days, optimize pricing, and target high-value loyalty segments
+
+Supported revenue management with real-time visibility into booking trends and revenue contributions by source
+
+Provided actionable insights for marketing campaigns focused on early bookers and repeat guests
+
+Let me know if you’d like to tailor this to a specific job role (e.g., Data Analyst, Business Intelligence Analyst, or Power BI Developer), or if you'd like a shorter version for LinkedIn or cover letter use.
+
+
+
+
+
+
+
+
+
